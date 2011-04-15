@@ -1,0 +1,12 @@
+* Threads
+  On Linux/glibc, they're fast and useful.
+
+* File descriptors
+  A nice abstraction, especially when used in combination with
+  a mainloop such as GLib's.
+
+* mmap
+  An efficient way to share memory across multiple processes, very useful.
+
+* That's it!
+  Everything else varies from "OK" (mounts, processes) to "garbage" (signals, fork(), /etc)

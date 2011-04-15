@@ -1,0 +1,58 @@
+Build API
+
+== Motivations ==
+
+What's wrong with ./configure && make && make install DESTDIR=/foo?
+
+Nothing's exactly "wrong" with it in that it works now; but there are
+things that can be improved.  For example, a main concern is that many
+project consumers want to split between a "foo" package that only has
+the runtime bits, and a "foo-devel" which has C library headers, etc.
+This logic can live much more sanely upstream than reproduced over and
+over in every downstream consumer.
+
+Also, while the autotools are good, we don't need *every* feature they
+have, and we don't want to force everyone to use them.  The Build API
+defines the subset of the interface that anyone using an alternative
+build system should implement.
+
+== Build API 0.1 ==
+
+There shall be two files present, "configure" and "Makefile".
+
+configure
+  This MUST be an executable file.  It MUST take the following arguments:
+    --prefix=PATH
+    --libdir=PATH
+    CFLAGS=COMPILER
+    CXXFLAGS=FLAGS
+
+  It SHOULD take the following arguments:
+    --build=HOST
+    --host=HOST
+  The semantics of these arguments are as defined by autoconf.  See "info autoconf",
+  under the section "Hosts and Cross Compilation".
+
+Makefile:
+  This MUST be a Makefile, as consumable by an implementation of "make" such
+  as GNU Make.  It MUST have the following targets:
+
+  .--BUILDAPI:
+    This is a dummy target, which simply specifies that your software implements
+    the Build API.
+
+  all:
+    Build all of the software.
+  
+  buildapi-install-runtime:
+    Install binaries, libraries, and data files intended to be present
+    on all systems.  This target MUST take an argument variable
+    "DESTDIR" which specifies an additional file path prefix before
+    the install path.
+
+  buildapi-install-devel:
+    Install header files, library symbolic links, and data files
+    necessary for other software to consume your software.  This
+    target MUST take an argument variable "DESTDIR" which specifies an
+    additional file path prefix before the install path.
+
