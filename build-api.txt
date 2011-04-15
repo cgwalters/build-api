@@ -37,18 +37,17 @@ Makefile:
   This MUST be a Makefile, as consumable by an implementation of "make" such
   as GNU Make.  It MUST have the following targets:
 
-  .--BUILDAPI:
-    This is a dummy target, which simply specifies that your software implements
-    the Build API.
-
   all:
     Build all of the software.
+
+  install: buildapi-install-runtime buildapi-install-devel
+    This target MUST take an argument variable "DESTDIR" which
+    specifies an additional file path prefix before the install path.
+    It simply depends on buildapi-install-runtime and buildapi-install-devel.
   
   buildapi-install-runtime:
     Install binaries, libraries, and data files intended to be present
-    on all systems.  This target MUST take an argument variable
-    "DESTDIR" which specifies an additional file path prefix before
-    the install path.
+    on all systems.
 
   buildapi-install-devel:
     Install header files, library symbolic links, and data files
