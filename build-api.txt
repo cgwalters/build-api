@@ -1,4 +1,5 @@
 Build API
+Version: 0.1
 
 == Motivations ==
 
@@ -16,16 +17,19 @@ have, and we don't want to force everyone to use them.  The Build API
 defines the subset of the interface that anyone using an alternative
 build system should implement.
 
-== Build API 0.1 ==
+== Build API ==
 
-There shall be two files present, "configure" and "Makefile".
+There MUST be at least these two files present: "configure" and "Makefile".
+The following files are optional: "autogen" (or "autogen.sh").
 
 configure
   This MUST be an executable file.  It MUST take the following arguments:
     --prefix=PATH
     --libdir=PATH
-    CFLAGS=COMPILER
+    CFLAGS=FLAGS
     CXXFLAGS=FLAGS
+
+  Example: ./configure --prefix=/opt/build/ --libdir=/opt/build/lib64 CFLAGS='-ggdb -O2'
 
   It SHOULD take the following arguments:
     --build=HOST
@@ -45,6 +49,8 @@ Makefile:
     specifies an additional file path prefix before the install path.
     It simply depends on buildapi-install-runtime and buildapi-install-devel.
   
+    Example:  make install DESTDIR=/opt/build-daemon/work/pkgname/root
+  
   buildapi-install-runtime:
     Install binaries, libraries, and data files intended to be present
     on all systems.
@@ -54,4 +60,18 @@ Makefile:
     necessary for other software to consume your software.  This
     target MUST take an argument variable "DESTDIR" which specifies an
     additional file path prefix before the install path.
+
+autogen (or "autogen.sh"):
+  If present, this file is an executable script which bootstraps
+  the build system.  It will be executed before configure, if the
+  configure script is not present.  For example, in autotools
+  based systems, this will run a tool such as "autoreconf".
+
+== Details ==
+
+=== srcdir and builddir ===
+  The build system MUST support compilation where srcdir == builddir,
+  and SHOULD support srcdir != builddir (in configure terms).
+
+
 
