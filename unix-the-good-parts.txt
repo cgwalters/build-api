@@ -8,5 +8,16 @@
 * mmap
   An efficient way to share memory across multiple processes, very useful.
 
-* That's it!
-  Everything else varies from "OK" (mounts, processes) to "garbage" (signals, fork(), /etc)
+* binfmt, or the idea that an executable can be found by magic in a file header;
+  essentially being agnostic to what defines an executable.
+
+* But what about everything else?
+  The OK parts:
+    - mounts
+    - processes
+    - /etc
+  
+  The garbage parts:
+    - signals
+    - fork() (mainly file descriptors inherited open by default)
+    - /etc/init.d scripts
