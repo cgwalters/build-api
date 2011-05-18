@@ -42,7 +42,12 @@ Makefile:
   as GNU Make.  It MUST have the following targets:
 
   all:
-    Build all of the software.
+    Build all of the software.  This variable SHOULD accept a make variable
+    called BUILDAPI_JOBS.  The BUILDAPI_JOBS variable specifies roughly how
+    many concurrent processes or threads the build system should use.  It
+    is however acceptable for the build system to invoke 
+      sysconf (_SC_NPROCESSORS_ONLN)
+    or a wrapper thereof as a basis as well.
 
   install: buildapi-install-runtime buildapi-install-devel
     This target MUST take an argument variable "DESTDIR" which
@@ -61,17 +66,23 @@ Makefile:
     target MUST take an argument variable "DESTDIR" which specifies an
     additional file path prefix before the install path.
 
+  Also, the following variables may be used to declare how this project
+  supports builds:
+
+  .buildapi-allow-builddir:
+    The presence of this target declares that this project supports a
+    build in which srcdir != builddir.
+  
+  .buildapi-require-builddir:
+    The presence of this target declares that this project *requires*
+    that srcdir != builddir.
+
+  .NOTPARALLEL:
+    This pseudo-target is taken from GNU Make; it tells the build system
+    not to invoke "make" with the -j option.
+  
 autogen (or "autogen.sh"):
   If present, this file is an executable script which bootstraps
   the build system.  It will be executed before configure, if the
   configure script is not present.  For example, in autotools
   based systems, this will run a tool such as "autoreconf".
-
-== Details ==
-
-=== srcdir and builddir ===
-  The build system MUST support compilation where srcdir == builddir,
-  and SHOULD support srcdir != builddir (in configure terms).
-
-
-
