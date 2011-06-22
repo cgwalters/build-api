@@ -1,5 +1,5 @@
 Build API
-Version: 0.1
+Version: 0.2
 
 == Motivations ==
 
@@ -66,16 +66,17 @@ Makefile:
     target MUST take an argument variable "DESTDIR" which specifies an
     additional file path prefix before the install path.
 
-  Also, the following variables may be used to declare how this project
-  supports builds:
+  Also, the following variables may be used to declare how this
+  project supports builds.  Variables may be found in either Makefile
+  or Makefile.in.  If both are present, the former takes precedence.
 
-  .buildapi-allow-builddir:
-    The presence of this target declares that this project supports a
-    build in which srcdir != builddir.
+  .buildapi-no-builddir:
+    The presence of this target declares that this project only works
+     when srcdir == builddir.
   
   .buildapi-require-builddir:
-    The presence of this target declares that this project *requires*
-    that srcdir != builddir.
+    The presence of this target declares that this project only works
+     when srcdir != builddir.
 
   .NOTPARALLEL:
     This pseudo-target is taken from GNU Make; it tells the build system
