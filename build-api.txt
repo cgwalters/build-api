@@ -75,15 +75,22 @@ Makefile:
      when srcdir == builddir.
   
   .buildapi-require-builddir:
-    The presence of this target declares that this project only works
-     when srcdir != builddir.
+    The presence of this target declares that this project ONLY works
+     when srcdir != builddir.  Avoid this if you can.
 
   .NOTPARALLEL:
-    This pseudo-target is taken from GNU Make; it tells the build system
-    not to invoke "make" with the -j option.
+    This pseudo-target is taken from GNU Make.  Use this when for
+    whatever reason, your makefile is not safe to run with the -j
+    option for make.  Obviously, try to avoid using this; or
+    alternatively, isolate the parts of your build which aren't
+    parallelizable into a separate makefile.
   
 autogen (or "autogen.sh"):
   If present, this file is an executable script which bootstraps
   the build system.  It will be executed before configure, if the
   configure script is not present.  For example, in autotools
   based systems, this will run a tool such as "autoreconf".
+
+  This tool SHOULD NOT automatically run ./configure.  If for
+  historical reasons it does, then it MUST honor an environment
+  variable NOCONFIGURE, which if set, suppresses the ./configure run.
