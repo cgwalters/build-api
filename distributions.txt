@@ -1,18 +1,28 @@
 "Linux distribution" is a bad term, because it encompasses several
-types of derived system which really have different qualities.  I use
-these terms:
+types of derived system which really have different qualities.  Some
+people use the term "distro" to refer to "anything which includes the
+Linux kernel" which is just way too broad.
 
-General Purpose Linux fork:
-  Multiuser, all purpose operating systems, often combined with a
-  large set of additional software in one big "package" set.  There
-  is usually no defined stability of the system; it devolves to "whatever
-  upstream does".  So gtk+ and X11 are stable, most everything else is not.
+I use these terms:
+
+General Purpose Linux fork (distro):
+  Multiuser, all purpose operating systems, combined with a large set
+  of additional software in one big "package" set.  A key characteristic
+  is that these systems are often self-hosting (packages in the "distro"
+  are built using other packages).
+
+  Another notable characteristic is that there is usually no defined
+  stability of the system; it devolves to "whatever upstream does".
+  So gtk+ and X11 are stable, most everything else is not.
 
   Why do I explicitly say "fork" here?  Well, you see "Arch Linux"
   randomly decided that /usr/bin/python is Python 3 one day, and I had
   enough.  But long before that, there are fundamental things like how
   shared libraries work (think multilib or /lib64) that *really
   matter* and are actually different.
+
+  The LSB is notable as an attempt to bring some measure of sanity to
+  the GP Linux fork market.
 
   Examples: Fedora, Debian, Ubuntu, Mandriva, etc. etc...
 
@@ -24,7 +34,10 @@ OS (Linux based):
   general purpose, for example, they often target personal
   devices, omitting multiuser support.
 
-  Examples: MeeGo, Android
+  Also in contrast to the GP Linux forks, these operating systems are
+  usually *not* self hosting.
+
+  Examples: MeeGo, WebOS, Android
 
 embeds:
   Custom systems basically designed to run one application.
