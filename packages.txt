@@ -157,6 +157,28 @@ Even worse, "apt-get upgrade" process calculates the upgrade based on
 what you have installed - so if you have a system installed for a long
 time, it can look different from a new installation with the same apps.
 
+= Why isn't this fixed yet?  =
+
+I've wondered about this for a long time - how can it be that all the
+core developers in Debian/Fedora are so blind as to how unreliable the
+system is?
+
+I finally realized - many of these people came to FOSS as tinkerers.
+The proposition of a system where you can dynamically
+add/remove/exchange bits of the operating system were very appealing.
+
+Let me suggest that there is a fundamental tradeoff between the
+flexibility and reliability.  Many (possibly most) of the people in
+these communities would keep the dial close to flexibility, despite
+the cost to reliability.
+
+Personally, I'm over 30 now.  I once watched one of my friends using
+Ubuntu install security updates and be confused by their patch to
+firefox to pop up a "I'm broken now" dialog.  Screw that.  I'm turning
+the dial towards reliability.
+
+
+
 
 
 
