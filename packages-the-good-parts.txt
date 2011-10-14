@@ -1,0 +1,13 @@
+Packages, the good parts
+
+= License Compliance = 
+
+This is hard, tedious work.  In some cases upstreams may not be aware
+of all the subtleties, or may simply just mix incompatible licenses.
+There is no substitute for hard work in this area.
+
+= Defining some boundaries, having a rationale for each component =
+
+For why this is good, see:
+
+http://arstechnica.com/microsoft/news/2009/11/inside-minwin-the-windows-7-kernel-slims-down.ars
