@@ -11,6 +11,10 @@
 * binfmt, or the idea that an executable can be found by magic in a file header;
   essentially being agnostic to what defines an executable.
 
+* Hard links for files
+  These help implement efficient specialized filesystems in userspace,
+  like hacktree and git.
+
 * But what about everything else?
   The OK parts:
     - mounts
