@@ -37,6 +37,11 @@ configure
   The semantics of these arguments are as defined by autoconf.  See "info autoconf",
   under the section "Hosts and Cross Compilation".
 
+  The configure script MUST ignore unknown options that start with
+  --enable- or --disable.  The rationale for this is the same as
+  autotools, it allows one to have global effects without special
+  casing each configure script over time.
+
 Makefile:
   This MUST be a Makefile, as consumable by an implementation of "make" such
   as GNU Make.  It MUST have the following targets:
