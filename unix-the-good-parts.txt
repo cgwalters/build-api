@@ -14,14 +14,3 @@
 * Hard links for files
   These help implement efficient specialized filesystems in userspace,
   like hacktree and git.
-
-* But what about everything else?
-  The OK parts:
-    - mounts
-    - processes
-    - /etc
-  
-  The garbage parts:
-    - signals
-    - fork() (mainly file descriptors inherited open by default)
-    - /etc/init.d scripts
