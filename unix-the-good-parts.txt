@@ -12,5 +12,4 @@
   essentially being agnostic to what defines an executable.
 
 * Hard links for files
-  These help implement efficient specialized filesystems in userspace,
-  like hacktree and git.
+  These help implement efficient specialized filesystems in userspace like git.
