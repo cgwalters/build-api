@@ -1,5 +1,10 @@
 Build API
+=========
+
 Version: 0.3
+
+Note: the upstream for this document is now:
+https://github.com/cgwalters/build-api
 
 Motivations
 -----------
