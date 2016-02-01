@@ -139,7 +139,9 @@ It SHOULD support these individual build targets:
    path.
 
 * `.NOTPARALLEL`: This pseudo-target is taken from GNU Make.  Use this
-   when for whatever reason, your makefile is not safe to run with the
-   -j option for make.  Obviously, try to avoid using this; or
-   alternatively, isolate the parts of your build which aren't
-   parallelizable into a separate makefile.
+   to forcibly disable parallel builds if your `Makefile` is not
+   compatible with them.  Obviously, you should try to avoid using
+   this.  One alternative is to progressively, isolate the parts of
+   your build which aren't parallelizable into a separate
+   `Makefile.notparallel` (and use `.NOTPARALLEL`, then and
+   recursively invoke `make -f Makefile.notparallel`).
