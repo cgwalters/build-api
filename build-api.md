@@ -130,7 +130,9 @@ such as GNU Make.  It MUST have the following targets:
 It SHOULD support these individual build targets:
   
 * `buildapi-install-runtime`: Install binaries, libraries, and data
-   files intended to be present on all systems.
+   files intended to be present on all systems.  This target MUST take
+   an argument variable "DESTDIR" which specifies an additional file
+   path prefix before the install path.
 
 * `buildapi-install-devel`: Install header files, library symbolic
    links, and data files necessary for other software to consume your
