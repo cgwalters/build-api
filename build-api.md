@@ -99,10 +99,15 @@ The following Build API variables may be used to declare how this
 project supports builds.  These variables will be found in the
 configure script by substring match on a line-by-line basis.
 
-* `buildapi-variable-no-builddir`: Declares that this project only works when srcdir == builddir.
+* `buildapi-variable-no-builddir`: Declares that this project only
+   works when srcdir == builddir.  Avoid this if you can; for example,
+   it forces build systems that are compiling for multiple
+   architectures simultaneously to create a copy of the source code
+   for each build.
 
 * `buildapi-variable-require-builddir`: Declares that this project
-   ONLY works when srcdir != builddir.  Avoid this if you can.
+   only works when srcdir != builddir.  Avoid this if you can; it's
+   nicest to allow users to do both.
 
 * `buildapi-variable-supports-runtime-devel`: Declares support for the
    buildapi-install-runtime and buildapi-install-devel Makefile
