@@ -117,7 +117,7 @@ Makefile
 --------
 
 This MUST be a Makefile, as consumable by an implementation of "make"
-such as GNU Make.  It MUST have the following targets:
+compatible with GNU Make.  It MUST have the following targets:
 
 * `all`: Build all of the software.  This variable SHOULD accept a make variable
    called `BUILDAPI_JOBS`.  The `BUILDAPI_JOBS` variable specifies roughly how
@@ -145,10 +145,7 @@ It SHOULD support these individual build targets:
    which specifies an additional file path prefix before the install
    path.
 
-* `.NOTPARALLEL`: This pseudo-target is taken from GNU Make.  Use this
-   to forcibly disable parallel builds if your `Makefile` is not
-   compatible with them.  Obviously, you should try to avoid using
-   this.  One alternative is to progressively, isolate the parts of
-   your build which aren't parallelizable into a separate
-   `Makefile.notparallel` (and use `.NOTPARALLEL`, then and
-   recursively invoke `make -f Makefile.notparallel`).
+Your Makefile must work when run with the `-j <JOBS>` option to make. If
+there are Makefiles within your project that don't work when run like
+this, you can use the GNU make `.NOTPARALLEL:` pseudo-target to
+disable parallel builds for those makefiles.
