@@ -42,7 +42,7 @@ Build API
 ---------
 
 In a freshly unpacked source tree, there MUST be an
-architecture-indepenent script named either 'autogen', 'autogen.sh',
+architecture-independent script named either 'autogen', 'autogen.sh',
 or 'configure'.  If 'configure' exists, it is preferred over the other
 two.  If configure does not exist, the 'autogen' script is executed
 with no arguments in the source directory, and it MUST generate an
